@@ -21,7 +21,6 @@ namespace Monitoring.Infrastructure.Persistance
         }
 
         public DbSet<Consumption> Consumptions { get; set; }
-        public DbSet<Employee> Employees { get; set; }
         public DbSet<Password> Passwords { get; set; }
         public DbSet<Project> Projects { get; set; }
 

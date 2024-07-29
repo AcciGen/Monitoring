@@ -1,4 +1,10 @@
-﻿namespace Monitoring.API
+﻿using Microsoft.AspNetCore.Identity;
+using Monitoring.Application;
+using Monitoring.Domain.Entities;
+using Monitoring.Infrastructure;
+using Monitoring.Infrastructure.Persistance;
+
+namespace Monitoring.API
 {
     public class Startup
     {
@@ -23,12 +29,20 @@
                 });
             });
 
-            //services.AddResumeAutoCheckkerBuissnessLogicDI(configRoot);
-            //services.AddResumeAutoCheckkerInfrastructureDI(configRoot);
+            services.AddMonitoringApplicationDependencyInjection();
+            services.AddMonitoringInfrastructureDependencyInjection(configRoot);
+
+            services.AddIdentity<Employee, IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<MonitoringDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddMemoryCache();
 
-            services.AddControllers();
+            services.AddControllers().
+                AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                });
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
         }
@@ -43,9 +57,9 @@
 
             app.UseHttpsRedirection();
 
-            app.UseCors();
-
             app.UseStaticFiles();
+
+            app.UseCors();
 
             app.UseAuthentication();
 
