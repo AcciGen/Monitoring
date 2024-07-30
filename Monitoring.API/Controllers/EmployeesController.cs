@@ -24,7 +24,6 @@ namespace Monitoring.API.Controllers
         {
             var employee = new Employee()
             {
-                Id = model.Id,
                 FullName = model.FullName,
                 UserName = model.UserName,
                 PhoneNumber = model.PhoneNumber,
@@ -76,13 +75,12 @@ namespace Monitoring.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ResponseModel> Update(EmployeeDTO model)
+        public async Task<ResponseModel> Update(Guid id, EmployeeDTO model)
         {
-            var employee = await _userManager.FindByIdAsync(model.Id.ToString());
+            var employee = await _userManager.FindByIdAsync(id.ToString());
 
             if (employee != null)
             {
-                employee.Id = model.Id;
                 employee.FullName = model.FullName;
                 employee.UserName = model.UserName;
                 employee.PhoneNumber = model.PhoneNumber;

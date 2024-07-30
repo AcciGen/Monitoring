@@ -15,8 +15,8 @@ namespace Monitoring.Domain.Entities
         public double Amount { get; set; }
         public double BudgetTarget { get; set; }
         public double? Received { get; set; }
-        public DateTimeOffset StartingDate { get; set; }
-        public DateTimeOffset EndingDate { get; set; }
+        public DateOnly StartingDate { get; set; }
+        public DateOnly EndingDate { get; set; }
         public List<double>? EmployeePercent { get; set; }
         public virtual List<Employee>? Employees { get; set; }
         public virtual List<Password>? Passwords { get; set; }
