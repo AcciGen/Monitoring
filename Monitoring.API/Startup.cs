@@ -67,6 +67,20 @@ namespace Monitoring.API
 
             app.MapControllers();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var roleManager =
+                    scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+
+                var roles = new[] { "Admin", "Employee" };
+
+                foreach (var role in roles)
+                {
+                    if (!roleManager.RoleExistsAsync(role).Result)
+                        roleManager.CreateAsync(new IdentityRole<Guid>(role)).Wait();
+                }
+            }
+
             app.Run();
         }
     }
