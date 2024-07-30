@@ -45,7 +45,7 @@ namespace Monitoring.Application.UseCases.ConsumptionCases.Handlers.CommandHandl
             return new ResponseModel
             {
                 Message = "Consumption was not found!",
-                StatusCode = 400
+                StatusCode = 404
             };
         }
     }

@@ -1,15 +1,30 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Monitoring.Application.Abstractions;
+using Monitoring.Application.UseCases.PasswordCases.Queries;
 using Monitoring.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Monitoring.Application.UseCases.PasswordCases.Handlers.QueryHandlers
 {
-    public class GetPasswordByIdQueryHandler : IRequest<Password>
+    public class GetPasswordByIdQueryHandler : IRequestHandler<GetPasswordByIdQuery, Password>
     {
-        public Guid Id { get; set; }
+        private readonly IMonitoringDbContext _context;
+
+        public GetPasswordByIdQueryHandler(IMonitoringDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Password> Handle(GetPasswordByIdQuery request, CancellationToken cancellationToken)
+        {
+            var password = await _context.Passwords.FirstOrDefaultAsync(x => x.Id == request.Id);
+
+            if (password != null)
+            {
+                return password;
+            }
+
+            throw new Exception("Password was not found!");
+        }
     }
 }
