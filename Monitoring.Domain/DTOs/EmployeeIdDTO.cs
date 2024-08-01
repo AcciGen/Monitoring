@@ -21,6 +21,5 @@ namespace Monitoring.Domain.DTOs
         public double? Fine { get; set; }
         public string? Description { get; set; }
         public string? FineDate { get; set; }
-        public double? RemainedSalary { get; set; }
     }
 }

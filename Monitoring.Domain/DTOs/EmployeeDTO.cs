@@ -16,10 +16,5 @@ namespace Monitoring.Domain.DTOs
         public string? SalaryDate { get; set; }
         public string EmploymentDate { get; set; }
         public short? Percent { get; set; }
-
-        public double? Fine { get; set; }
-        public string? Description { get; set; }
-        public string? FineDate { get; set; }
-        public double? RemainedSalary { get; set; }
     }
 }

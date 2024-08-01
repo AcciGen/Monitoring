@@ -34,12 +34,8 @@ namespace Monitoring.API.Controllers
                 SalaryDate = model.SalaryDate,
                 EmploymentDate = model.EmploymentDate,
                 Percent = model.Percent,
-
-                Fine = model.Fine,
-                Description = model.Description,
-                FineDate = model.FineDate,
-                RemainedSalary = model.RemainedSalary
-            };
+                RemainedSalary = model.Salary - model.GivenSalary
+        };
 
             var result = await _userManager.CreateAsync(employee);
 
@@ -95,7 +91,7 @@ namespace Monitoring.API.Controllers
                 employee.Fine = model.Fine;
                 employee.Description = model.Description;
                 employee.FineDate = model.FineDate;
-                employee.RemainedSalary = model.RemainedSalary;
+                employee.RemainedSalary = model.Salary - model.GivenSalary - model.Fine;
 
                 var result = await _userManager.UpdateAsync(employee);
 
