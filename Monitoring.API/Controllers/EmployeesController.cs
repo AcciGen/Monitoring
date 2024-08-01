@@ -75,9 +75,9 @@ namespace Monitoring.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ResponseModel> Update([FromBody] string id, EmployeeDTO model)
+        public async Task<ResponseModel> Update(EmployeeIdDTO model)
         {
-            var employee = await _userManager.FindByIdAsync(id);
+            var employee = await _userManager.FindByIdAsync(model.Id.ToString());
 
             if (employee != null)
             {
