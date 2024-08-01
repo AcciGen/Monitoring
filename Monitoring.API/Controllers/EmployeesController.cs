@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
+using Monitoring.Application.UseCases.ConsumptionCases.Commands;
 using Monitoring.Domain.DTOs;
 using Monitoring.Domain.Entities;
 
@@ -114,9 +115,9 @@ namespace Monitoring.API.Controllers
         }
 
         [HttpDelete]
-        public async Task<ResponseModel> Delete([FromBody] string id)
+        public async Task<ResponseModel> Delete([FromBody] DeleteConsumptionCommand model)
         {
-            var employee = await _userManager.FindByIdAsync(id);
+            var employee = await _userManager.FindByIdAsync(model.Id.ToString());
 
             if (employee != null)
             {
