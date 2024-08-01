@@ -35,7 +35,6 @@ namespace Monitoring.Application.UseCases.ProjectCases.Handlers.CommandHandlers
                     Received = request.Received ?? null,
                     StartingDate = request.StartingDate,
                     EndingDate = request.EndingDate,
-                    EmployeePercent = request.EmployeePercent ?? null
                 };
 
                 await _context.Projects.AddAsync(newProject, cancellationToken);

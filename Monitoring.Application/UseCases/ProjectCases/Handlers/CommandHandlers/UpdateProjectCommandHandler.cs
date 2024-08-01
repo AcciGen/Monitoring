@@ -29,7 +29,6 @@ namespace Monitoring.Application.UseCases.ProjectCases.Handlers.CommandHandlers
                 project.Received = request.Received;
                 project.StartingDate = request.StartingDate;
                 project.EndingDate = request.EndingDate;
-                project.EmployeePercent = request.EmployeePercent;
 
                 _context.Projects.Update(project);
 

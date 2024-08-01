@@ -64,7 +64,7 @@ namespace Monitoring.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Employee> GetById(Guid id)
+        public async Task<Employee> GetById([FromBody] Guid id)
         {
             var result = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -75,9 +75,9 @@ namespace Monitoring.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ResponseModel> Update(Guid id, EmployeeDTO model)
+        public async Task<ResponseModel> Update([FromBody] string id, EmployeeDTO model)
         {
-            var employee = await _userManager.FindByIdAsync(id.ToString());
+            var employee = await _userManager.FindByIdAsync(id);
 
             if (employee != null)
             {
@@ -114,9 +114,9 @@ namespace Monitoring.API.Controllers
         }
 
         [HttpDelete]
-        public async Task<ResponseModel> Delete(Guid id)
+        public async Task<ResponseModel> Delete([FromBody] string id)
         {
-            var employee = await _userManager.FindByIdAsync(id.ToString());
+            var employee = await _userManager.FindByIdAsync(id);
 
             if (employee != null)
             {
