@@ -17,7 +17,6 @@ namespace Monitoring.Domain.Entities
         public double? Received { get; set; }
         public string StartingDate { get; set; }
         public string EndingDate { get; set; }
-        public List<double>? EmployeePercent { get; set; }
         public virtual List<Employee>? Employees { get; set; }
         public virtual List<Password>? Passwords { get; set; }
     }

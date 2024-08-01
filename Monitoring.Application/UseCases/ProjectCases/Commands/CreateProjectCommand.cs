@@ -18,6 +18,5 @@ namespace Monitoring.Application.UseCases.ProjectCases.Commands
         public double? Received { get; set; }
         public string StartingDate { get; set; }
         public string EndingDate { get; set; }
-        public List<double>? EmployeePercent { get; set; }
     }
 }
