@@ -26,7 +26,7 @@ namespace Monitoring.API.Controllers
             var employee = new Employee()
             {
                 FullName = model.FullName,
-                UserName = model.FullName.Split(' ')[0],
+                UserName = "Employee",
                 PhoneNumber = model.PhoneNumber,
                 Position = model.Position,
                 Salary = model.Salary,
@@ -79,7 +79,7 @@ namespace Monitoring.API.Controllers
             if (employee != null)
             {
                 employee.FullName = model.FullName;
-                employee.UserName = model.FullName.Split(' ')[0];
+                employee.UserName = "Employee";
                 employee.PhoneNumber = model.PhoneNumber;
                 employee.Position = model.Position;
                 employee.Salary = model.Salary;
