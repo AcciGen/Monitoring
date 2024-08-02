@@ -61,7 +61,7 @@ namespace Monitoring.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Employee> GetById([FromBody] Guid id)
+        public async Task<Employee> GetById(Guid id)
         {
             var result = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
 
