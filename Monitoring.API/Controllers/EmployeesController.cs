@@ -23,10 +23,7 @@ namespace Monitoring.API.Controllers
         [HttpPost]
         public async Task<ResponseModel> Create(EmployeeDTO model)
         {
-            var employee = new Employee()
-            {
-                FullName = model.FullName,
-                UserName = model.FullName.Trim().Replace("А", "A").Replace("Б", "B").Replace("В", "V").Replace("Г", "G")
+            string changedName = model.FullName.Replace("А", "A").Replace("Б", "B").Replace("В", "V").Replace("Г", "G")
             .Replace("Д", "D").Replace("Е", "E").Replace("Ё", "Yo").Replace("Ж", "Zh")
             .Replace("З", "Z").Replace("И", "I").Replace("Й", "Y").Replace("К", "K")
             .Replace("Л", "L").Replace("М", "M").Replace("Н", "N").Replace("О", "O")
@@ -44,7 +41,12 @@ namespace Monitoring.API.Controllers
             .Replace("у", "u").Replace("ф", "f").Replace("х", "kh").Replace("ц", "ts")
             .Replace("ч", "ch").Replace("ш", "sh").Replace("щ", "shch").Replace("ъ", "")
             .Replace("ы", "y").Replace("ь", "").Replace("э", "e").Replace("ю", "yu")
-            .Replace("я", "ya"),
+            .Replace("я", "ya").Replace(" ", "");
+
+            var employee = new Employee()
+            {
+                FullName = model.FullName,
+                UserName = changedName,
                 PhoneNumber = model.PhoneNumber,
                 Position = model.Position,
                 Salary = model.Salary,
@@ -96,8 +98,7 @@ namespace Monitoring.API.Controllers
 
             if (employee != null)
             {
-                employee.FullName = model.FullName;
-                employee.UserName = model.FullName.Trim().Replace("А", "A").Replace("Б", "B").Replace("В", "V").Replace("Г", "G")
+                string changedName = model.FullName.Replace("А", "A").Replace("Б", "B").Replace("В", "V").Replace("Г", "G")
             .Replace("Д", "D").Replace("Е", "E").Replace("Ё", "Yo").Replace("Ж", "Zh")
             .Replace("З", "Z").Replace("И", "I").Replace("Й", "Y").Replace("К", "K")
             .Replace("Л", "L").Replace("М", "M").Replace("Н", "N").Replace("О", "O")
@@ -115,7 +116,10 @@ namespace Monitoring.API.Controllers
             .Replace("у", "u").Replace("ф", "f").Replace("х", "kh").Replace("ц", "ts")
             .Replace("ч", "ch").Replace("ш", "sh").Replace("щ", "shch").Replace("ъ", "")
             .Replace("ы", "y").Replace("ь", "").Replace("э", "e").Replace("ю", "yu")
-            .Replace("я", "ya");
+            .Replace("я", "ya").Replace(" ", "");
+
+                employee.FullName = model.FullName;
+                employee.UserName = changedName;
                 employee.PhoneNumber = model.PhoneNumber;
                 employee.Position = model.Position;
                 employee.Salary = model.Salary;
