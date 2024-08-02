@@ -26,7 +26,25 @@ namespace Monitoring.API.Controllers
             var employee = new Employee()
             {
                 FullName = model.FullName,
-                UserName = "Employee",
+                UserName = model.FullName.Trim().Replace("А", "A").Replace("Б", "B").Replace("В", "V").Replace("Г", "G")
+            .Replace("Д", "D").Replace("Е", "E").Replace("Ё", "Yo").Replace("Ж", "Zh")
+            .Replace("З", "Z").Replace("И", "I").Replace("Й", "Y").Replace("К", "K")
+            .Replace("Л", "L").Replace("М", "M").Replace("Н", "N").Replace("О", "O")
+            .Replace("П", "P").Replace("Р", "R").Replace("С", "S").Replace("Т", "T")
+            .Replace("У", "U").Replace("Ф", "F").Replace("Х", "Kh").Replace("Ц", "Ts")
+            .Replace("Ч", "Ch").Replace("Ш", "Sh").Replace("Щ", "Shch").Replace("Ъ", "")
+            .Replace("Ы", "Y").Replace("Ь", "").Replace("Э", "E").Replace("Ю", "Yu")
+            .Replace("Я", "Ya")
+            // Lowercase letters
+            .Replace("а", "a").Replace("б", "b").Replace("в", "v").Replace("г", "g")
+            .Replace("д", "d").Replace("е", "e").Replace("ё", "yo").Replace("ж", "zh")
+            .Replace("з", "z").Replace("и", "i").Replace("й", "y").Replace("к", "k")
+            .Replace("л", "l").Replace("м", "m").Replace("н", "n").Replace("о", "o")
+            .Replace("п", "p").Replace("р", "r").Replace("с", "s").Replace("т", "t")
+            .Replace("у", "u").Replace("ф", "f").Replace("х", "kh").Replace("ц", "ts")
+            .Replace("ч", "ch").Replace("ш", "sh").Replace("щ", "shch").Replace("ъ", "")
+            .Replace("ы", "y").Replace("ь", "").Replace("э", "e").Replace("ю", "yu")
+            .Replace("я", "ya"),
                 PhoneNumber = model.PhoneNumber,
                 Position = model.Position,
                 Salary = model.Salary,
@@ -79,7 +97,25 @@ namespace Monitoring.API.Controllers
             if (employee != null)
             {
                 employee.FullName = model.FullName;
-                employee.UserName = "Employee";
+                employee.UserName = model.FullName.Trim().Replace("А", "A").Replace("Б", "B").Replace("В", "V").Replace("Г", "G")
+            .Replace("Д", "D").Replace("Е", "E").Replace("Ё", "Yo").Replace("Ж", "Zh")
+            .Replace("З", "Z").Replace("И", "I").Replace("Й", "Y").Replace("К", "K")
+            .Replace("Л", "L").Replace("М", "M").Replace("Н", "N").Replace("О", "O")
+            .Replace("П", "P").Replace("Р", "R").Replace("С", "S").Replace("Т", "T")
+            .Replace("У", "U").Replace("Ф", "F").Replace("Х", "Kh").Replace("Ц", "Ts")
+            .Replace("Ч", "Ch").Replace("Ш", "Sh").Replace("Щ", "Shch").Replace("Ъ", "")
+            .Replace("Ы", "Y").Replace("Ь", "").Replace("Э", "E").Replace("Ю", "Yu")
+            .Replace("Я", "Ya")
+            // Lowercase letters
+            .Replace("а", "a").Replace("б", "b").Replace("в", "v").Replace("г", "g")
+            .Replace("д", "d").Replace("е", "e").Replace("ё", "yo").Replace("ж", "zh")
+            .Replace("з", "z").Replace("и", "i").Replace("й", "y").Replace("к", "k")
+            .Replace("л", "l").Replace("м", "m").Replace("н", "n").Replace("о", "o")
+            .Replace("п", "p").Replace("р", "r").Replace("с", "s").Replace("т", "t")
+            .Replace("у", "u").Replace("ф", "f").Replace("х", "kh").Replace("ц", "ts")
+            .Replace("ч", "ch").Replace("ш", "sh").Replace("щ", "shch").Replace("ъ", "")
+            .Replace("ы", "y").Replace("ь", "").Replace("э", "e").Replace("ю", "yu")
+            .Replace("я", "ya");
                 employee.PhoneNumber = model.PhoneNumber;
                 employee.Position = model.Position;
                 employee.Salary = model.Salary;
